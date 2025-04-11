@@ -1,0 +1,15 @@
+# dependencies
+node_modules/
+.env
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+.vscode/
+
+# Optional: compiled output (if using TypeScript)
+dist/
