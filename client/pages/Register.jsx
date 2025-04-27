@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -23,17 +25,19 @@ const Register = () => {
         'https://mern-authentication-fsd.onrender.com/api/auth/register',
         formData
       );
-      
-      if (response.data.success) {
-        alert('Registration successful!');
-        navigate('/login')
-      } else {
-        alert('Registration failed. Please try again.');
-        navigate('/register')
-      }
 
+      if (response.data.success) {
+        toast.success('Registration successful!');
+        setTimeout(() => {
+          navigate('/login');
+        }, 3000); // Redirect after 2 seconds
+
+      } else {
+        toast.error('Registration failed. Please try again.');
+      }
     } catch (error) {
       console.error('Error:', error.response?.data || error.message);
+      toast.error('An error occurred. Please try again.');
     }
   };
 
@@ -95,6 +99,7 @@ const Register = () => {
           </button>
         </form>
       </div>
+      <ToastContainer />
     </div>
   );
 };
