@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { AppContext } from "../context/AppContext";
 
 const PasswordReset = () => {
   const [formData, setFormData] = useState({
@@ -10,6 +11,8 @@ const PasswordReset = () => {
     newPassword: '',
     otp: '',
   });
+
+  const { backendURL} = useContext(AppContext);
 
   const navigate = useNavigate();
 
@@ -24,8 +27,8 @@ const PasswordReset = () => {
         toast.error('Please enter your email address.');
         return;
       }
-      const response = await axios.post(
-        'https://mern-authentication-fsd.onrender.com/api/auth/send-reset-otp',
+      const response = await axios.post(backendURL + 
+        `/api/auth/send-reset-otp`,
         { email: formData.email }
       );
       toast.success(response.data.message || 'OTP sent successfully!');
@@ -38,8 +41,7 @@ const PasswordReset = () => {
   const handleResetPassword = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        'https://mern-authentication-fsd.onrender.com/api/auth/reset-password',
+      const response = await axios.post(backendURL+`/api/auth/reset-password`,
         {
           email: formData.email,
           otp: formData.otp,
