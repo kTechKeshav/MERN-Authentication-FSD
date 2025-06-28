@@ -25,5 +25,5 @@ app.use('/api/auth', authRouter);
 app.use('/api/user', userRouter);
 
 app.listen(PORT, ()=>{
-      console.log(`Server started on port http://127.0.0.1:${PORT}`);
+      console.log(`Server started on port http://localhost:${PORT}`);
 })
