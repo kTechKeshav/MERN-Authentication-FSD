@@ -87,14 +87,11 @@ npm run dev
 
 ## 📸 Screenshots
 
-### Landing Page
-![Landing](images\landing.png) 
-
-### Login Page
-![Login](images\login.png)
-
-### Registration Page
-![Register](images\registration.png) 
+<div align="center">
+  <img src="images/login.png" alt="Login" width="265" style="margin: 10px;" />
+  <img src="images/landing.png" alt="Landing" width="250" style="margin: 10px;" />
+  <img src="images/registration.png" alt="Register" width="250" style="margin: 10px;" />
+</div>
 
 ## 🌍 Deployment
 
